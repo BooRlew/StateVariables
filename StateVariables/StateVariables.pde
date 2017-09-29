@@ -69,13 +69,12 @@ void menuUI(){
   rect(width / 2, height / 2, 400, 150);
   rect(width / 2, height / 1.4, 400, 150);
   
-  
-  mainMenuButtons();
-  
   textAlign(CENTER);
   fill(40);
   textSize(70);
   text("Open Paint",width / 2, height / 4 + 13);
+  
+  mainMenuButtons();
 }
 
 
@@ -84,6 +83,10 @@ void mainMenuButtons(){
   fill(240);
   if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/4 - 75 && mouseY < height/4 + 75){
     rect(width / 2, height / 4, 400, 150);
+    textAlign(CENTER);
+    fill(40);
+    textSize(70);
+    text("Open Paint",width / 2, height / 4 + 13);
     if (mousePressed){
       rectMode(CORNER);
       noStroke();
