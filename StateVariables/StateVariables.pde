@@ -2,6 +2,7 @@ float sizeOfPen;
 float bgC;
 float r, g, b;
 float eraser;
+int state;
 
 
 
@@ -9,19 +10,102 @@ void setup() {
   fullScreen();
   background(255);
   strokeWeight(5);
-  frameRate(100000);
+  frameRate(144);
   sizeOfPen = 50;
   r = 0;
   g = 0;
   b = 0;
   eraser = 255;
-  noCursor();
+  state = 1;
 }
 
 
 void draw() {
-  cursor();
+  if (state == 1) {
+    mainMenu();
+  } 
+  else if (state == 2) {
+    drawMode();
+  } 
+  else if (state == 3) {
+  }
+  //cursor();
+
+  //noStroke();
+
+  //sizeOfPen = constrain(sizeOfPen, 2, 200);
+
+  ////Color
+  //fill(r, g, b);
+  //r = constrain(r, 0, 255);
+  //g = constrain(g, 0, 255);
+  //b = constrain(b, 0, 255);
+
+  //paint();
+
+  //createUI();
+}
+
+
+//Displays the main menu
+void mainMenu(){
+  cursor(ARROW);
+  menuUI();
   
+  
+}
+
+
+//creates menu UI
+void menuUI(){
+  background(200);
+  
+  stroke(0);
+  strokeWeight(3);
+  
+  fill(150);
+  rectMode(CENTER);
+  rect(width / 2, height / 4, 400, 150);
+  rect(width / 2, height / 2, 400, 150);
+  rect(width / 2, height / 1.4, 400, 150);
+  
+  
+  mainMenuButtons();
+  
+  textAlign(CENTER);
+  fill(40);
+  textSize(70);
+  text("Open Paint",width / 2, height / 4 + 13);
+}
+
+
+//creates the intractivity with main buttons
+void mainMenuButtons(){
+  fill(240);
+  if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/4 - 75 && mouseY < height/4 + 75){
+    rect(width / 2, height / 4, 400, 150);
+    if (mousePressed){
+      rectMode(CORNER);
+      noStroke();
+      fill(255);
+      rect(0, 253, width, height - 250);
+      state = 2;
+    }
+  }
+  else if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/2 - 75 && mouseY < height/2 + 75){
+    rect(width / 2, height / 2, 400, 150);    
+  }
+  else if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/1.4 - 75 && mouseY < height/1.4 + 75){
+    rect(width / 2, height / 1.4, 400, 150);    
+  }
+}
+
+
+
+//turns on the standard draw mode
+void drawMode() {
+  cursor();
+
   noStroke();
 
   sizeOfPen = constrain(sizeOfPen, 2, 200);
@@ -36,6 +120,7 @@ void draw() {
 
   createUI();
 }
+
 
 
 //Create the user interface
@@ -67,15 +152,16 @@ void createUI() {
   text("Blue : " + (b), width/2 + 75, 200);
 
   textAlign(LEFT);
-  text("Use UP and Down Arrows for pen size.", 1100, 100);
-  text("Use Num Pad to change RGB values,", 1100, 125);
-  text("7,4 for Red, 8,5 for Green, 9,6 for Blue", 1100, 150);
-  text("Use 'E' to clear the screen", 1100, 175);
+  text("Use UP and Down Arrows for pen size.", width - 500, 100);
+  text("Use Num Pad to change RGB values,", width - 500, 125);
+  text("7,4 for Red, 8,5 for Green, 9,6 for Blue", width - 500, 150);
+  text("Use 'E' to clear the screen", width - 500, 175);
 
   textAlign(CENTER);
   textSize(50);
   text("Welcome to Processing Paint!", width/2, 50);
 }
+
 
 
 
@@ -94,6 +180,7 @@ void paint() {
     ellipse(mouseX, mouseY, sizeOfPen, sizeOfPen);
   }
 }
+
 
 
 //Change the size and colour of the pen and also clear the background
@@ -133,13 +220,12 @@ void keyPressed() {
 }
 
 
+
 //Show and hide the cursor when needed
 void cursor() {
   if (mouseY > 250) {
     cursor(CROSS);
-  }
-  
-  else{
+  } else {
     cursor(ARROW);
   }
 }
