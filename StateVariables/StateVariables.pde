@@ -3,7 +3,7 @@ float bgC;
 float r, g, b;
 float eraser;
 int state;
-
+boolean ifStartWasPressed;
 
 
 void setup() {
@@ -87,6 +87,7 @@ void mainMenuButtons(){
     fill(40);
     textSize(70);
     text("Open Paint",width / 2, height / 4 + 13);
+    ifStartWasPressed = true; 
     if (mousePressed){
       rectMode(CORNER);
       noStroke();
@@ -122,8 +123,20 @@ void drawMode() {
   paint();
 
   createUI();
+  if (ifStartWasPressed == true){
+    rectMode(CORNER);
+    fill(255);
+    rect(0, 253, width, height - 250); 
+    //ifStartWasPressed = false;
+  }
+  
 }
 
+
+
+void mouseReleased(){
+  ifStartWasPressed = false; 
+}
 
 
 //Create the user interface
