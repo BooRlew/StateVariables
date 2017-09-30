@@ -7,11 +7,6 @@
 
 
 
-
-
-
-
-
 float sizeOfPen;
 float bgC;
 float r, g, b;
