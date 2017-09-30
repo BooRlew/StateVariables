@@ -29,21 +29,6 @@ void draw() {
   } 
   else if (state == 3) {
   }
-  //cursor();
-
-  //noStroke();
-
-  //sizeOfPen = constrain(sizeOfPen, 2, 200);
-
-  ////Color
-  //fill(r, g, b);
-  //r = constrain(r, 0, 255);
-  //g = constrain(g, 0, 255);
-  //b = constrain(b, 0, 255);
-
-  //paint();
-
-  //createUI();
 }
 
 
