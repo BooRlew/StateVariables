@@ -28,13 +28,18 @@ void draw() {
   } else if (state == 3) {
     instructionScreen();
   } else if (state == 4) {
-    //creditScreen();
+    exitApp();
   }
   if (state == 2 || state == 3 || state == 4){
     exitButton(); 
   }
 }
 
+
+
+void exitApp(){
+  
+}
 
 
 void exitButton(){
@@ -96,6 +101,8 @@ void menuUI() {
   text("Open Paint", width / 2, height / 4 + 12);
   
   text("Instructions", width / 2, height / 2 + 12);
+  
+  text("Exit App", width / 2, height / 1.4 + 13);
 
   mainMenuButtons();
 }
@@ -139,6 +146,13 @@ void mainMenuButtons() {
   
   else if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/1.4 - 75 && mouseY < height/1.4 + 75) {
     rect(width / 2, height / 1.4, 400, 150);
+    textAlign(CENTER);
+    fill(40);
+    textSize(70);
+    text("Exit App", width / 2, height / 1.4 + 13);
+    if (mousePressed){
+      exit(); 
+    }
   }
 }
 
