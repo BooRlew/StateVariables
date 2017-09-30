@@ -23,57 +23,98 @@ void setup() {
 void draw() {
   if (state == 1) {
     mainMenu();
-  } 
-  else if (state == 2) {
+  } else if (state == 2) {
     drawMode();
-  } 
-  else if (state == 3) {
+  } else if (state == 3) {
+    instructionScreen();
+  } else if (state == 4) {
+    //creditScreen();
+  }
+  if (state == 2 || state == 3 || state == 4){
+    exitButton(); 
   }
 }
 
 
+
+void exitButton(){
+  stroke(2);
+  fill(240);
+  rect(width - 50, 50, 40 , 40);
+  textAlign(CENTER);
+  textSize(45);
+  fill(0);
+  text("X", width-50, 67);
+  if (mouseX > width - 70 && mouseX < width - 30 && mouseY > 30 && mouseY < 70){
+    fill(100);
+    rect(width - 50, 50, 40 , 40);
+    fill(0);
+    text("X", width-50, 67);
+    if (mousePressed){
+      state = 1; 
+    }
+  }
+}
+
+
+//Display Instructions
+void instructionScreen() {
+  fill(75);
+  textAlign(CENTER);
+
+  text("Use UP and Down Arrows for pen size.", width/2, height/2 - 400);
+  text("Use Num Pad to change RGB values,", width/2, height/2 - 200);
+  text("7,4 for Red, 8,5 for Green, 9,6 for Blue", width/2, height/2);
+  text("Use 'E' to clear the screen", width/2, height/2 + 200);
+  text("Right Click to erase.", width/2, height/2 + 400);
+}
+
+
 //Displays the main menu
-void mainMenu(){
+void mainMenu() {
   cursor(ARROW);
   menuUI();
-  
-  
 }
 
 
 //creates menu UI
-void menuUI(){
+void menuUI() {
   background(200);
-  
+
   stroke(0);
   strokeWeight(3);
-  
+
   fill(150);
   rectMode(CENTER);
   rect(width / 2, height / 4, 400, 150);
   rect(width / 2, height / 2, 400, 150);
   rect(width / 2, height / 1.4, 400, 150);
-  
+
   textAlign(CENTER);
   fill(40);
   textSize(70);
-  text("Open Paint",width / 2, height / 4 + 13);
+  text("Open Paint", width / 2, height / 4 + 12);
   
+  text("Instructions", width / 2, height / 2 + 12);
+
   mainMenuButtons();
 }
 
 
 //creates the intractivity with main buttons
-void mainMenuButtons(){
+void mainMenuButtons() {
   fill(240);
-  if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/4 - 75 && mouseY < height/4 + 75){
+  
+  if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/4 - 75 && mouseY < height/4 + 75) {
     rect(width / 2, height / 4, 400, 150);
+    
     textAlign(CENTER);
     fill(40);
     textSize(70);
-    text("Open Paint",width / 2, height / 4 + 13);
+    text("Open Paint", width / 2, height / 4 + 13);
     ifStartWasPressed = true; 
-    if (mousePressed){
+    
+    if (mousePressed) {
       rectMode(CORNER);
       noStroke();
       fill(255);
@@ -81,11 +122,23 @@ void mainMenuButtons(){
       state = 2;
     }
   }
-  else if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/2 - 75 && mouseY < height/2 + 75){
-    rect(width / 2, height / 2, 400, 150);    
+  
+  else if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/2 - 75 && mouseY < height/2 + 75) {
+    rect(width / 2, height / 2, 400, 150);
+    
+    textAlign(CENTER);
+    fill(40);
+    textSize(70);
+    text("Instructions", width / 2, height / 2 + 13);
+    ifStartWasPressed = true; 
+    if (mousePressed){
+      background(200);
+      state = 3;
+    }
   }
-  else if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/1.4 - 75 && mouseY < height/1.4 + 75){
-    rect(width / 2, height / 1.4, 400, 150);    
+  
+  else if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/1.4 - 75 && mouseY < height/1.4 + 75) {
+    rect(width / 2, height / 1.4, 400, 150);
   }
 }
 
@@ -108,19 +161,18 @@ void drawMode() {
   paint();
 
   createUI();
-  if (ifStartWasPressed == true){
+  if (ifStartWasPressed == true) {
     rectMode(CORNER);
     fill(255);
     rect(0, 253, width, height - 250); 
     //ifStartWasPressed = false;
   }
-  
 }
 
 
 
-void mouseReleased(){
-  ifStartWasPressed = false; 
+void mouseReleased() {
+  ifStartWasPressed = false;
 }
 
 
@@ -213,7 +265,7 @@ void keyPressed() {
     b -= 5;
   }
   if ((key == 'e') || (key == 'E')) {
-    //background(255);
+    noStroke();
     rectMode(CORNER);
     fill(255);
     rect(0, 253, width, height - 250);
