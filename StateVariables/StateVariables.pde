@@ -1,10 +1,24 @@
+//Made By Richard
+//Still need to learn arrays to create the preview brush. 
+
+//known bugs;
+//  -When Open Paint is clicked the exit button appears momentarily in the wrong location
+//  -
+
+
+
+
+
+
+
+
 float sizeOfPen;
 float bgC;
 float r, g, b;
 float eraser;
 int state;
 boolean ifStartWasPressed;
-
+PImage backGround;
 
 void setup() {
   fullScreen();
@@ -17,6 +31,7 @@ void setup() {
   b = 0;
   eraser = 255;
   state = 1;
+  backGround = loadImage("Background.jpg");
 }
 
 
@@ -27,8 +42,6 @@ void draw() {
     drawMode();
   } else if (state == 3) {
     instructionScreen();
-  } else if (state == 4) {
-    exitApp();
   }
   if (state == 2 || state == 3){
     exitButton(); 
@@ -36,25 +49,22 @@ void draw() {
 }
 
 
-
-void exitApp(){
-  
-}
-
-
 void exitButton(){
   stroke(2);
   fill(240);
   rect(width - 50, 50, 40 , 40);
+  
   textAlign(CENTER);
   textSize(45);
   fill(0);
   text("X", width-50, 67);
+  
   if (mouseX > width - 70 && mouseX < width - 30 && mouseY > 30 && mouseY < 70){
     fill(100);
     rect(width - 50, 50, 40 , 40);
     fill(0);
     text("X", width-50, 67);
+    
     if (mousePressed){
       state = 1; 
     }
@@ -64,7 +74,13 @@ void exitButton(){
 
 //Display Instructions
 void instructionScreen() {
-  fill(75);
+  image(backGround, 0, 0);
+  
+  fill(200);
+  rectMode(CENTER);
+  rect(width/2, height/2, width - 300, height - 100);
+  
+  fill(0);
   textAlign(CENTER);
 
   text("Use UP and Down Arrows for pen size.", width/2, height/2 - 400);
@@ -77,7 +93,7 @@ void instructionScreen() {
 
 //Displays the main menu
 void mainMenu() {
-  background(200);
+  image(backGround, 0, 0);
   
   cursor(ARROW);
   textAlign(CENTER);
@@ -101,9 +117,9 @@ void menuUI() {
 
   fill(150);
   rectMode(CENTER);
-  rect(width / 2, height / 4, 400, 150);
-  rect(width / 2, height / 2, 400, 150);
-  rect(width / 2, height / 1.4, 400, 150);
+  rect(width / 2, height / 4, 400, 150, 10);
+  rect(width / 2, height / 2, 400, 150, 10);
+  rect(width / 2, height / 1.3, 400, 150, 10);
 
   textAlign(CENTER);
   fill(40);
@@ -112,7 +128,7 @@ void menuUI() {
   
   text("Instructions", width / 2, height / 2 + 12);
   
-  text("Exit App", width / 2, height / 1.4 + 13);
+  text("Exit App", width / 2, height / 1.3 + 13);
 
   mainMenuButtons();
 }
@@ -123,7 +139,7 @@ void mainMenuButtons() {
   fill(240);
   
   if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/4 - 75 && mouseY < height/4 + 75) {
-    rect(width / 2, height / 4, 400, 150);
+    rect(width / 2, height / 4, 400, 150, 10);
     
     textAlign(CENTER);
     fill(40);
@@ -141,25 +157,28 @@ void mainMenuButtons() {
   }
   
   else if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/2 - 75 && mouseY < height/2 + 75) {
-    rect(width / 2, height / 2, 400, 150);
+    rect(width / 2, height / 2, 400, 150, 10);
     
     textAlign(CENTER);
     fill(40);
     textSize(70);
     text("Instructions", width / 2, height / 2 + 13);
+    
     ifStartWasPressed = true; 
+    
     if (mousePressed){
       background(200);
       state = 3;
     }
   }
   
-  else if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/1.4 - 75 && mouseY < height/1.4 + 75) {
-    rect(width / 2, height / 1.4, 400, 150);
+  else if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/1.3 - 75 && mouseY < height/1.3 + 75) {
+    rect(width / 2, height / 1.3, 400, 150, 10);
     textAlign(CENTER);
     fill(40);
     textSize(70);
-    text("Exit App", width / 2, height / 1.4 + 13);
+    text("Exit App", width / 2, height / 1.3 + 13);
+    
     if (mousePressed){
       exit(); 
     }
@@ -189,12 +208,11 @@ void drawMode() {
     rectMode(CORNER);
     fill(255);
     rect(0, 253, width, height - 250); 
-    //ifStartWasPressed = false;
   }
 }
 
 
-
+//Stops the pen from drawing when you click open paint
 void mouseReleased() {
   ifStartWasPressed = false;
 }
