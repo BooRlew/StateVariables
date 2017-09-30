@@ -2,8 +2,7 @@
 //Still need to learn arrays to create the preview brush. 
 
 //known bugs;
-//  -When Open Paint is clicked the exit button appears momentarily in the wrong location
-//  -
+
 
 
 
@@ -45,6 +44,7 @@ void draw() {
 
 
 void exitButton(){
+  rectMode(CENTER);
   stroke(2);
   fill(240);
   rect(width - 50, 50, 40 , 40);
@@ -52,13 +52,13 @@ void exitButton(){
   textAlign(CENTER);
   textSize(45);
   fill(0);
-  text("X", width-50, 67);
+  text("X", width-49, 67);
   
   if (mouseX > width - 70 && mouseX < width - 30 && mouseY > 30 && mouseY < 70){
     fill(100);
     rect(width - 50, 50, 40 , 40);
     fill(0);
-    text("X", width-50, 67);
+    text("X", width-49, 67);
     
     if (mousePressed){
       state = 1; 
