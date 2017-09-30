@@ -30,7 +30,7 @@ void draw() {
   } else if (state == 4) {
     exitApp();
   }
-  if (state == 2 || state == 3 || state == 4){
+  if (state == 2 || state == 3){
     exitButton(); 
   }
 }
@@ -77,14 +77,24 @@ void instructionScreen() {
 
 //Displays the main menu
 void mainMenu() {
+  background(200);
+  
   cursor(ARROW);
+  textAlign(CENTER);
+  textSize(72);
+  fill(25);
+  text("Welcome to Processing Paint!", width/2, 100);
+  
+  fill(140);
+  textSize(20);
+  textAlign(LEFT);
+  text("Made by Richard Lewis", 10, height - 10);
   menuUI();
 }
 
 
 //creates menu UI
 void menuUI() {
-  background(200);
 
   stroke(0);
   strokeWeight(3);
@@ -224,9 +234,9 @@ void createUI() {
   text("7,4 for Red, 8,5 for Green, 9,6 for Blue", width - 500, 150);
   text("Use 'E' to clear the screen", width - 500, 175);
 
-  textAlign(CENTER);
-  textSize(50);
-  text("Welcome to Processing Paint!", width/2, 50);
+  //textAlign(CENTER);
+  //textSize(50);
+  //text("Welcome to Processing Paint!", width/2, 50);
 }
 
 
