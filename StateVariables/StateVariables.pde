@@ -1,5 +1,5 @@
 //Made By Richard
-//Still need to learn arrays to create the preview brush. 
+//Still need to learn arrays to create the preview stroke. 
 
 //Used state variables for both the menus and the brush states.
 //I used it for the brush states to make it easy to add more brushes and toggle switch between them.
