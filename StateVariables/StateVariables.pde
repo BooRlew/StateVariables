@@ -76,7 +76,7 @@ void exitButton() {
 void instructionScreen() {
   image(backGround, 0, 0);
 
-  fill(200);
+  fill(20, 80, 185);
   rectMode(CENTER);
   rect(width/2, height/2, width - 300, height - 100);
 
@@ -98,10 +98,10 @@ void mainMenu() {
   cursor(ARROW);
   textAlign(CENTER);
   textSize(72);
-  fill(25);
+  fill(0);
   text("Welcome to Processing Paint!", width/2, 100);
 
-  fill(140);
+  fill(0);
   textSize(20);
   textAlign(LEFT);
   text("Made by Richard Lewis", 10, height - 10);
@@ -115,14 +115,14 @@ void menuUI() {
   stroke(0);
   strokeWeight(3);
 
-  fill(150);
+  fill(20, 80, 185);
   rectMode(CENTER);
   rect(width / 2, height / 4, 400, 150, 10);
   rect(width / 2, height / 2, 400, 150, 10);
   rect(width / 2, height / 1.3, 400, 150, 10);
 
   textAlign(CENTER);
-  fill(40);
+  fill(0);
   textSize(70);
   text("Open Paint", width / 2, height / 4 + 12);
 
@@ -142,7 +142,7 @@ void mainMenuButtons() {
     rect(width / 2, height / 4, 400, 150, 10);
 
     textAlign(CENTER);
-    fill(40);
+    fill(80, 130, 255);
     textSize(70);
     text("Open Paint", width / 2, height / 4 + 13);
     ifStartWasPressed = true; 
@@ -158,7 +158,7 @@ void mainMenuButtons() {
     rect(width / 2, height / 2, 400, 150, 10);
 
     textAlign(CENTER);
-    fill(40);
+    fill(80, 130, 255);
     textSize(70);
     text("Instructions", width / 2, height / 2 + 13);
 
@@ -171,7 +171,7 @@ void mainMenuButtons() {
   } else if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/1.3 - 75 && mouseY < height/1.3 + 75) {
     rect(width / 2, height / 1.3, 400, 150, 10);
     textAlign(CENTER);
-    fill(40);
+    fill(80, 130, 255);
     textSize(70);
     text("Exit App", width / 2, height / 1.3 + 13);
 
@@ -218,13 +218,11 @@ void mouseReleased() {
 void createUI() {
   textSize(13);
 
-  stroke(100);
+  stroke(0);
   strokeWeight(4);
   rectMode(CORNER);
-  fill(175);
+  fill(20, 80, 185);
   rect( 0, 0, width, 250);
-
-  stroke(75);
 
   rectMode(CENTER);
   fill(r, g, b);
@@ -275,7 +273,7 @@ void createUI() {
     ellipse(100, 125, 50, 50);
   }
 
-  fill(75);
+  fill(0);
   textAlign(CENTER);
   text("Red : " + (r), width/2 - 90, 200);
   text("Green : " + (g), width/2, 200);
