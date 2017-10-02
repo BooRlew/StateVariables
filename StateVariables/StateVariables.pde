@@ -4,7 +4,7 @@
 //Used state variables for both the menus and the brush states.
 //I used it for the brush states to make it easy to add more brushes and toggle switch between them.
 
-//known bugs;
+//need to add  RGB sliders instead of instructions in pant screen
 
 
 
@@ -51,7 +51,7 @@ void draw() {
 void exitButton() {
   rectMode(CENTER);
   stroke(2);
-  fill(240);
+  fill(255);
   rect(width - 50, 50, 40, 40);
 
   textAlign(CENTER);
@@ -84,7 +84,7 @@ void instructionScreen() {
   textAlign(CENTER);
 
   text("Use UP and Down Arrows for pen size.", width/2, height/2 - 300);
-  text("Use Num Pad to change RGB values,", width/2, height/2 - 150);
+  text("Use Left and Right arrows for different brushes", width/2, height/2 - 150);
   text("7,4 for Red, 8,5 for Green, 9,6 for Blue", width/2, height/2);
   text("Use 'E' to clear the screen", width/2, height/2 + 150);
   text("Right Click to erase.", width/2, height/2 + 300);
@@ -162,8 +162,6 @@ void mainMenuButtons() {
     textSize(70);
     text("Instructions", width / 2, height / 2 + 13);
 
-    ifStartWasPressed = true; 
-
     if (mousePressed) {
       background(200);
       state = 3;
@@ -200,6 +198,7 @@ void drawMode() {
   paint();
 
   createUI();
+
   if (ifStartWasPressed == true) {
     rectMode(CORNER);
     fill(255);
@@ -227,7 +226,7 @@ void createUI() {
   rectMode(CENTER);
   fill(r, g, b);
   rect( width/2, 125, 300, 100);
-  
+
   fill(255, 60);
   stroke(0);
   strokeWeight(2);
@@ -237,39 +236,37 @@ void createUI() {
   noStroke();
 
   fill(0);
-  
+
   //Preview of current brush size, next and pevious brush
   if (penState == 1) {
     ellipseMode(CENTER);
     ellipse(250, 125, sizeOfPen, sizeOfPen);
-    
+
     rectMode(CENTER);
     rect(100, 125, 50, 50);
-    
+
     fill(0, alpha);
     ellipseMode(CENTER);
     ellipse(400, 125, 50, 50);
-    
   } else if (penState == 2) {
     rectMode(CENTER);
     rect(250, 125, sizeOfPen, sizeOfPen);
-    
+
     ellipse(400, 125, 50, 50);
-    
+
     fill(0, alpha);
     ellipseMode(CENTER);
     ellipse(100, 125, 50, 50);
-    
   } else if (penState == 3) {
     fill(0, alpha);
     ellipseMode(CENTER);
     ellipse(250, 125, sizeOfPen, sizeOfPen);
-    
+
     fill(0);
-    
+
     rectMode(CENTER);
     rect(400, 125, 50, 50);
-    
+
     ellipse(100, 125, 50, 50);
   }
 
@@ -382,23 +379,17 @@ void keyPressed() {
 
   if (key == '7') {
     r += 5;
-  }  
-  if (key == '4') {
+  } else if (key == '4') {
     r -= 5;
-  }
-  if (key == '8') {
+  } else if (key == '8') {
     g += 5;
-  }
-  if (key == '5') {
+  } else if (key == '5') {
     g -= 5;
-  }
-  if (key == '9') {
+  } else if (key == '9') {
     b += 5;
-  }
-  if (key == '6') {
+  } else if (key == '6') {
     b -= 5;
-  }
-  if ((key == 'e') || (key == 'E')) {
+  } else if ((key == 'e') || (key == 'E')) {
     noStroke();
     rectMode(CORNER);
     fill(255);
