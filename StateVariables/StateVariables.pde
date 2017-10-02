@@ -226,22 +226,50 @@ void createUI() {
   rectMode(CENTER);
   fill(r, g, b);
   rect( width/2, 125, 300, 100);
+  
+  fill(255, 60);
+  stroke(0);
+  strokeWeight(2);
+  rectMode(CENTER);
+  rect(250, 125, 210, 210, 10);
 
   noStroke();
 
   fill(0);
+  
+  //Preview of current brush size, next and pevious brush
   if (penState == 1) {
     ellipseMode(CENTER);
     ellipse(250, 125, sizeOfPen, sizeOfPen);
-  }
-  else if(penState == 2){
+    
     rectMode(CENTER);
-    rect(250, 125, sizeOfPen, sizeOfPen);
-  }
-  else if(penState == 3){
+    rect(100, 125, 50, 50);
+    
     fill(0, alpha);
     ellipseMode(CENTER);
-    ellipse(250, 125, sizeOfPen, sizeOfPen);     
+    ellipse(400, 125, 50, 50);
+    
+  } else if (penState == 2) {
+    rectMode(CENTER);
+    rect(250, 125, sizeOfPen, sizeOfPen);
+    
+    ellipse(400, 125, 50, 50);
+    
+    fill(0, alpha);
+    ellipseMode(CENTER);
+    ellipse(100, 125, 50, 50);
+    
+  } else if (penState == 3) {
+    fill(0, alpha);
+    ellipseMode(CENTER);
+    ellipse(250, 125, sizeOfPen, sizeOfPen);
+    
+    fill(0);
+    
+    rectMode(CENTER);
+    rect(400, 125, 50, 50);
+    
+    ellipse(100, 125, 50, 50);
   }
 
   fill(75);
@@ -267,16 +295,16 @@ void paint() {
   if (penState == 1) {
     paintCircle();
   }
-  if (penState == 2){
-    paintSquare(); 
+  if (penState == 2) {
+    paintSquare();
   }
-  if (penState == 3){
+  if (penState == 3) {
     paintTransparent();
   }
 }
 
 
-void paintTransparent(){
+void paintTransparent() {
   if ((mousePressed == true) && (mouseButton == LEFT)) {
     fill(r, g, b, alpha);
     ellipseMode(CENTER);
@@ -287,14 +315,14 @@ void paintTransparent(){
     fill(eraser);
     noStroke();
     ellipseMode(CENTER);
-    ellipse(mouseX, mouseY, sizeOfPen, sizeOfPen);  
+    ellipse(mouseX, mouseY, sizeOfPen, sizeOfPen);
   }
 }
 
 
 
 //paint square
-void paintSquare(){
+void paintSquare() {
   if ((mousePressed == true) && (mouseButton == LEFT)) {
     fill(r, g, b);
     rectMode(CENTER);
