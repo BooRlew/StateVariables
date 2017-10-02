@@ -1,6 +1,9 @@
 //Made By Richard
 //Still need to learn arrays to create the preview brush. 
 
+//Used state variables for both the menus and the brush states.
+//I used it for the brush states to make it easy to add more brushes and toggle switch between them.
+
 //known bugs;
 
 
@@ -80,11 +83,11 @@ void instructionScreen() {
   fill(0);
   textAlign(CENTER);
 
-  text("Use UP and Down Arrows for pen size.", width/2, height/2 - 400);
-  text("Use Num Pad to change RGB values,", width/2, height/2 - 200);
+  text("Use UP and Down Arrows for pen size.", width/2, height/2 - 300);
+  text("Use Num Pad to change RGB values,", width/2, height/2 - 150);
   text("7,4 for Red, 8,5 for Green, 9,6 for Blue", width/2, height/2);
-  text("Use 'E' to clear the screen", width/2, height/2 + 200);
-  text("Right Click to erase.", width/2, height/2 + 400);
+  text("Use 'E' to clear the screen", width/2, height/2 + 150);
+  text("Right Click to erase.", width/2, height/2 + 300);
 }
 
 
@@ -274,9 +277,9 @@ void createUI() {
 
   fill(75);
   textAlign(CENTER);
-  text("Red : " + (r), width/2 - 75, 200);
+  text("Red : " + (r), width/2 - 90, 200);
   text("Green : " + (g), width/2, 200);
-  text("Blue : " + (b), width/2 + 75, 200);
+  text("Blue : " + (b), width/2 + 90, 200);
 
   textAlign(LEFT);
   text("Use UP and Down Arrows for pen size.", width - 500, 100);
