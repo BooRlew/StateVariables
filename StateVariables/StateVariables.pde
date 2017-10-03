@@ -285,8 +285,10 @@ void createUI() {
   //textAlign(CENTER);
   //textSize(50);
   //text("Welcome to Processing Paint!", width/2, 50);
-}
 
+} 
+  
+}
 
 //detects which brush to use
 void paint() {
