@@ -288,7 +288,7 @@ void createUI() {
 
 } 
   
-}
+
 
 //detects which brush to use
 void paint() {
