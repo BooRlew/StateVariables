@@ -16,6 +16,10 @@ float eraser;
 int state;
 boolean ifStartWasPressed;
 PImage backGround;
+float redTab, greentab, blueTab;
+boolean rTabClicked, gTabClicked, bTabClicked;
+int redNumber, greenNumber, blueNumber;
+float sMouseX;
 
 void setup() {
   penState = 1;
@@ -31,6 +35,8 @@ void setup() {
   alpha = 20;
   state = 1;
   backGround = loadImage("Background.jpg");
+  
+  redTab = width-500;
 }
 
 
@@ -210,6 +216,8 @@ void drawMode() {
 //Stops the pen from drawing when you click open paint
 void mouseReleased() {
   ifStartWasPressed = false;
+  
+  rTabClicked = false;
 }
 
 
@@ -276,17 +284,58 @@ void createUI() {
   text("Green : " + (g), width/2, 200);
   text("Blue : " + (b), width/2 + 90, 200);
 
-  textAlign(LEFT);
-  text("Use UP and Down Arrows for pen size.", width - 500, 100);
-  text("Use Num Pad to change RGB values,", width - 500, 125);
-  text("7,4 for Red, 8,5 for Green, 9,6 for Blue", width - 500, 150);
-  text("Use 'E' to clear the screen", width - 500, 175);
+  //textAlign(LEFT);
+  //text("Use UP and Down Arrows for pen size.", width - 500, 100);
+  //text("Use Num Pad to change RGB values,", width - 500, 125);
+  //text("7,4 for Red, 8,5 for Green, 9,6 for Blue", width - 500, 150);
+  //text("Use 'E' to clear the screen", width - 500, 175);
 
   //textAlign(CENTER);
   //textSize(50);
   //text("Welcome to Processing Paint!", width/2, 50);
 
+  showSliders();
 } 
+
+
+//float redTab, greentab, blueTab;
+//boolean rTabClicked, gTabClicked, bTabClicked;
+//int redNumber, greenNumber, blueNumber;
+
+
+void showSliders(){
+  rectMode(CORNER);
+  stroke(0);
+  strokeWeight(1);
+  fill(75);
+  rect(width - 500, 80, 300, 3);     //top slider
+  rect(width - 500, 125, 300, 3);    //middle slider  
+  rect(width - 500, 170, 300, 3);    //bottom slider  
+  
+  sMouseX = mouseX;
+  sMouseX = constrain(sMouseX, width - 500, width - 200); 
+  
+  sliderTabs();
+  
+  rectMode(CENTER);
+  fill(100);
+  rect(redTab, 81.5, 10, 20);
+  r = int(map(redTab, width - 500, width - 200, 0, 255));
+}
+
+
+void sliderTabs(){
+  if(mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 70 && mouseY <= 90 && mousePressed){
+    rTabClicked = true;
+  }
+  if (rTabClicked){
+    redTab = sMouseX;
+  }
+  //rectMode(CENTER);
+  
+  //fill(100);
+  //rect(redTab, 81.5, 10, 20);
+}
   
 
 
