@@ -427,11 +427,13 @@ void keyPressed() {
       }
     }
   }
-
+  
+  redTab = constrain(redTab, width - 495, width - 205);
+  
   if (key == '7') {
-    r += 5;
+    redTab += 5;
   } else if (key == '4') {
-    r -= 5;
+    redTab -= 5;
   } else if (key == '8') {
     g += 5;
   } else if (key == '5') {
