@@ -6,6 +6,8 @@
 
 //need to add  RGB sliders instead of instructions in pant screen
 
+//I beleive the sliders for colour were the most difficult part of the program. I think they would be the best candidates for extra for exterts
+
 
 
 int penState;
@@ -16,7 +18,7 @@ float eraser;
 int state;
 boolean ifStartWasPressed;
 PImage backGround;
-float redTab, greentab, blueTab;
+float redTab, greenTab, blueTab;
 boolean rTabClicked, gTabClicked, bTabClicked;
 int redNumber, greenNumber, blueNumber;
 float sMouseX;
@@ -37,6 +39,8 @@ void setup() {
   backGround = loadImage("Background.jpg");
   
   redTab = width-500;
+  greenTab = width-500;
+  blueTab = width-500;
 }
 
 
@@ -200,8 +204,9 @@ void drawMode() {
   r = constrain(r, 0, 255);
   g = constrain(g, 0, 255);
   b = constrain(b, 0, 255);
-
+  if(!rTabClicked && !gTabClicked && !bTabClicked){
   paint();
+  }
 
   createUI();
 
@@ -218,6 +223,8 @@ void mouseReleased() {
   ifStartWasPressed = false;
   
   rTabClicked = false;
+  gTabClicked = false;
+  bTabClicked = false;
 }
 
 
@@ -321,15 +328,27 @@ void showSliders(){
   fill(100);
   rect(redTab, 81.5, 10, 20);
   r = int(map(redTab, width - 500, width - 200, 0, 255));
+  
+  rect(greenTab, 127.5, 10, 20);
+  g = int(map(greenTab, width - 500, width - 200, 0, 255));
 }
 
 
 void sliderTabs(){
+  //Red slider
   if(mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 70 && mouseY <= 90 && mousePressed){
     rTabClicked = true;
   }
   if (rTabClicked){
     redTab = sMouseX;
+  }
+  
+  //green slider
+  if(mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 70 && mouseY <= 90 && mousePressed){
+    gTabClicked = true;
+  }
+  if (rTabClicked){
+    greenTab = sMouseX;
   }
   //rectMode(CENTER);
   
