@@ -331,12 +331,15 @@ void showSliders(){
   
   rect(greenTab, 127.5, 10, 20);
   g = int(map(greenTab, width - 500, width - 200, 0, 255));
+  
+  rect(blueTab, 172.5, 10, 20);
+  b = int(map(blueTab, width - 500, width - 200, 0, 255));
 }
 
 
 void sliderTabs(){
   //Red slider
-  if(mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 70 && mouseY <= 90 && mousePressed){
+  if(mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 70 && mouseY <= 90 && mousePressed && !gTabClicked && !bTabClicked){
     rTabClicked = true;
   }
   if (rTabClicked){
@@ -344,16 +347,20 @@ void sliderTabs(){
   }
   
   //green slider
-  if(mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 70 && mouseY <= 90 && mousePressed){
+  if(mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 120 && mouseY <= 140 && mousePressed && !rTabClicked && !bTabClicked){
     gTabClicked = true;
   }
-  if (rTabClicked){
+  if (gTabClicked){
     greenTab = sMouseX;
   }
-  //rectMode(CENTER);
   
-  //fill(100);
-  //rect(redTab, 81.5, 10, 20);
+  //blue slider
+  if(mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 170 && mouseY <= 190 && mousePressed && !rTabClicked && !gTabClicked){  
+    bTabClicked = true; 
+  }
+  if (gTabClicked){
+    blueTab = sMouseX; 
+  }
 }
   
 
@@ -454,13 +461,13 @@ void keyPressed() {
   } else if (key == '4') {
     redTab -= 5;
   } else if (key == '8') {
-    g += 5;
+    greenTab += 5;
   } else if (key == '5') {
-    g -= 5;
+    greenTab -= 5;
   } else if (key == '9') {
-    b += 5;
+    blueTab += 5;
   } else if (key == '6') {
-    b -= 5;
+    blueTab -= 5;
   } else if ((key == 'e') || (key == 'E')) {
     noStroke();
     rectMode(CORNER);
