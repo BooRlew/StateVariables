@@ -36,7 +36,7 @@ void setup() {
   eraser = 255;
   alpha = 20;
   state = 1;
-  backGround = loadImage("Background.jpg");
+  backGround = loadImage("Background.png");
   
   redTab = width-500;
   greenTab = width-500;
@@ -86,7 +86,7 @@ void exitButton() {
 void instructionScreen() {
   image(backGround, 0, 0);
 
-  fill(20, 80, 185);
+  fill(167, 36, 36);
   rectMode(CENTER);
   rect(width/2, height/2, width - 300, height - 100);
 
@@ -125,7 +125,7 @@ void menuUI() {
   stroke(0);
   strokeWeight(3);
 
-  fill(20, 80, 185);
+  fill(167, 36, 36);
   rectMode(CENTER);
   rect(width / 2, height / 4, 400, 150, 10);
   rect(width / 2, height / 2, 400, 150, 10);
@@ -152,7 +152,7 @@ void mainMenuButtons() {
     rect(width / 2, height / 4, 400, 150, 10);
 
     textAlign(CENTER);
-    fill(80, 130, 255);
+    fill(167, 36, 36);
     textSize(70);
     text("Open Paint", width / 2, height / 4 + 13);
     ifStartWasPressed = true; 
@@ -168,7 +168,7 @@ void mainMenuButtons() {
     rect(width / 2, height / 2, 400, 150, 10);
 
     textAlign(CENTER);
-    fill(80, 130, 255);
+    fill(167, 36, 36);
     textSize(70);
     text("Instructions", width / 2, height / 2 + 13);
 
@@ -179,7 +179,7 @@ void mainMenuButtons() {
   } else if (mouseX > width/2 - 200 && mouseX < width/2 + 200 && mouseY > height/1.3 - 75 && mouseY < height/1.3 + 75) {
     rect(width / 2, height / 1.3, 400, 150, 10);
     textAlign(CENTER);
-    fill(80, 130, 255);
+    fill(167, 36, 36);
     textSize(70);
     text("Exit App", width / 2, height / 1.3 + 13);
 
@@ -235,7 +235,7 @@ void createUI() {
   stroke(0);
   strokeWeight(4);
   rectMode(CORNER);
-  fill(20, 80, 185);
+  fill(167, 36, 36);
   rect( 0, 0, width, 250);
 
   rectMode(CENTER);
@@ -291,16 +291,6 @@ void createUI() {
   text("Green : " + (g), width/2, 200);
   text("Blue : " + (b), width/2 + 90, 200);
 
-  //textAlign(LEFT);
-  //text("Use UP and Down Arrows for pen size.", width - 500, 100);
-  //text("Use Num Pad to change RGB values,", width - 500, 125);
-  //text("7,4 for Red, 8,5 for Green, 9,6 for Blue", width - 500, 150);
-  //text("Use 'E' to clear the screen", width - 500, 175);
-
-  //textAlign(CENTER);
-  //textSize(50);
-  //text("Welcome to Processing Paint!", width/2, 50);
-
   showSliders();
 } 
 
@@ -317,7 +307,9 @@ void showSliders(){
   fill(75);
   rect(width - 500, 80, 300, 3);     //top slider
   rect(width - 500, 125, 300, 3);    //middle slider  
-  rect(width - 500, 170, 300, 3);    //bottom slider  
+  rect(width - 500, 170, 300, 3);    //bottom slider 
+  
+  
   
   sMouseX = mouseX;
   sMouseX = constrain(sMouseX, width - 500, width - 200); 
@@ -334,6 +326,15 @@ void showSliders(){
   
   rect(blueTab, 172.5, 10, 20);
   b = int(map(blueTab, width - 500, width - 200, 0, 255));
+  
+  fill(200, 0, 0);
+  rect(width - 550 , 80, 20, 20);
+
+  fill(0, 200, 0);
+  rect(width - 550 , 125, 20, 20);
+    
+  fill(0, 0, 200);
+  rect(width - 550 , 170, 20, 20);
 }
 
 
@@ -454,7 +455,9 @@ void keyPressed() {
     }
   }
   
-  redTab = constrain(redTab, width - 495, width - 205);
+  redTab = constrain(redTab, width - 500, width - 200);
+  greenTab = constrain(greenTab, width - 500, width - 200);
+  blueTab = constrain(blueTab, width - 500, width - 200);
   
   if (key == '7') {
     redTab += 5;
