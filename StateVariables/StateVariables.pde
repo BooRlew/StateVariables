@@ -358,7 +358,7 @@ void sliderTabs(){
   if(mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 170 && mouseY <= 190 && mousePressed && !rTabClicked && !gTabClicked){  
     bTabClicked = true; 
   }
-  if (gTabClicked){
+  if (bTabClicked){
     blueTab = sMouseX; 
   }
 }
