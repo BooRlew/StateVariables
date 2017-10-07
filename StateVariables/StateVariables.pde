@@ -2,9 +2,7 @@
 //Still need to learn arrays to create the preview stroke. 
 
 //Used state variables for both the menus and the brush states.
-//I used it for the brush states to make it easy to add more brushes and toggle switch between them.
-
-//need to add  RGB sliders instead of instructions in pant screen
+//I used it for the brush states to make it easy to add more brushes and switch between them.
 
 //I beleive the sliders for colour were the most difficult part of the program. I think they would be the best candidates for extra for exterts
 
@@ -37,7 +35,7 @@ void setup() {
   alpha = 20;
   state = 1;
   backGround = loadImage("Background.png");
-  
+
   redTab = width-500;
   greenTab = width-500;
   blueTab = width-500;
@@ -134,10 +132,9 @@ void menuUI() {
   textAlign(CENTER);
   fill(0);
   textSize(70);
+
   text("Open Paint", width / 2, height / 4 + 12);
-
   text("Instructions", width / 2, height / 2 + 12);
-
   text("Exit App", width / 2, height / 1.3 + 13);
 
   mainMenuButtons();
@@ -204,8 +201,9 @@ void drawMode() {
   r = constrain(r, 0, 255);
   g = constrain(g, 0, 255);
   b = constrain(b, 0, 255);
-  if(!rTabClicked && !gTabClicked && !bTabClicked){
-  paint();
+
+  if (!rTabClicked && !gTabClicked && !bTabClicked) {
+    paint();
   }
 
   createUI();
@@ -221,7 +219,7 @@ void drawMode() {
 //Stops the pen from drawing when you click open paint
 void mouseReleased() {
   ifStartWasPressed = false;
-  
+
   rTabClicked = false;
   gTabClicked = false;
   bTabClicked = false;
@@ -300,70 +298,69 @@ void createUI() {
 //int redNumber, greenNumber, blueNumber;
 
 
-void showSliders(){
+void showSliders() {
   rectMode(CORNER);
   stroke(0);
   strokeWeight(1);
   fill(75);
+  
   rect(width - 500, 80, 300, 3);     //top slider
   rect(width - 500, 125, 300, 3);    //middle slider  
   rect(width - 500, 170, 300, 3);    //bottom slider 
-  
-  
-  
+
   sMouseX = mouseX;
   sMouseX = constrain(sMouseX, width - 500, width - 200); 
-  
+
   sliderTabs();
-  
+
   rectMode(CENTER);
   fill(100);
   rect(redTab, 81.5, 10, 20);
   r = int(map(redTab, width - 500, width - 200, 0, 255));
-  
+
   rect(greenTab, 127.5, 10, 20);
   g = int(map(greenTab, width - 500, width - 200, 0, 255));
-  
+
   rect(blueTab, 172.5, 10, 20);
   b = int(map(blueTab, width - 500, width - 200, 0, 255));
-  
+
   fill(200, 0, 0);
-  rect(width - 550 , 80, 20, 20);
+  rect(width - 550, 80, 20, 20);
 
   fill(0, 200, 0);
-  rect(width - 550 , 125, 20, 20);
-    
+  rect(width - 550, 125, 20, 20);
+
   fill(0, 0, 200);
-  rect(width - 550 , 170, 20, 20);
+  rect(width - 550, 170, 20, 20);
 }
 
 
-void sliderTabs(){
+void sliderTabs() {
   //Red slider
-  if(mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 70 && mouseY <= 90 && mousePressed && !gTabClicked && !bTabClicked){
+  if (mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 70 && mouseY <= 90 && mousePressed && !gTabClicked && !bTabClicked) {
     rTabClicked = true;
   }
-  if (rTabClicked){
+  if (rTabClicked) {
     redTab = sMouseX;
   }
-  
+
   //green slider
-  if(mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 120 && mouseY <= 140 && mousePressed && !rTabClicked && !bTabClicked){
+  if (mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 120 && mouseY <= 140 && mousePressed && !rTabClicked && !bTabClicked) {
     gTabClicked = true;
   }
-  if (gTabClicked){
+  if (gTabClicked) {
     greenTab = sMouseX;
   }
-  
+
   //blue slider
-  if(mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 170 && mouseY <= 190 && mousePressed && !rTabClicked && !gTabClicked){  
-    bTabClicked = true; 
+  if (mouseX >= width - 500 && mouseX <= width - 200 && mouseY >= 170 && mouseY <= 190 && mousePressed && !rTabClicked && !gTabClicked) {  
+    bTabClicked = true;
   }
-  if (bTabClicked){
-    blueTab = sMouseX; 
+  if (bTabClicked) {
+    blueTab = sMouseX;
   }
 }
-  
+
 
 
 //detects which brush to use
@@ -425,7 +422,7 @@ void paintCircle() {
 
   if ((mousePressed == true) && (mouseButton == RIGHT)) {
     fill(eraser);
-    noStroke();
+    //noStroke();
     ellipseMode(CENTER);
     ellipse(mouseX, mouseY, sizeOfPen, sizeOfPen);
   }
@@ -454,11 +451,11 @@ void keyPressed() {
       }
     }
   }
-  
+
   redTab = constrain(redTab, width - 500, width - 200);
   greenTab = constrain(greenTab, width - 500, width - 200);
   blueTab = constrain(blueTab, width - 500, width - 200);
-  
+
   if (key == '7') {
     redTab += 5;
   } else if (key == '4') {
