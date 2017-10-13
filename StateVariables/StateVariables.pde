@@ -254,33 +254,40 @@ void createUI() {
   if (penState == 1) {
     ellipseMode(CENTER);
     ellipse(250, 125, sizeOfPen, sizeOfPen);
-
-    rectMode(CENTER);
-    rect(100, 125, 50, 50);
-
+    
     fill(0, alpha);
     ellipseMode(CENTER);
     ellipse(400, 125, 50, 50);
+
+    fill(0);
+    
+    rectMode(CENTER);
+    rect(100, 125, 50, 50);
+    
   } else if (penState == 2) {
     rectMode(CENTER);
     rect(250, 125, sizeOfPen, sizeOfPen);
-
-    ellipse(400, 125, 50, 50);
-
+    
     fill(0, alpha);
     ellipseMode(CENTER);
     ellipse(100, 125, 50, 50);
+    
+    fill(0);
+
+    ellipse(400, 125, 50, 50);
+    
   } else if (penState == 3) {
     fill(0, alpha);
     ellipseMode(CENTER);
     ellipse(250, 125, sizeOfPen, sizeOfPen);
 
     fill(0);
+    
+    ellipse(100, 125, 50, 50);
 
     rectMode(CENTER);
     rect(400, 125, 50, 50);
-
-    ellipse(100, 125, 50, 50);
+    
   }
 
   fill(0);
@@ -303,7 +310,7 @@ void showSliders() {
   stroke(0);
   strokeWeight(1);
   fill(75);
-  
+
   rect(width - 500, 80, 300, 3);     //top slider
   rect(width - 500, 125, 300, 3);    //middle slider  
   rect(width - 500, 170, 300, 3);    //bottom slider 
